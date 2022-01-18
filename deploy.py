@@ -35,13 +35,23 @@ bytecode = compile_sol["contracts"]["SimpleStorage.sol"]["Storage"]["evm"]["byte
 abi = compile_sol["contracts"]["SimpleStorage.sol"]["Storage"]["abi"]
 # print(abi)
 
-# want to connect to ganache
-w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:7545"))
+# # want to connect to ganache
+# w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:7545"))
+# # define the chain ID
+# chain_id = 1337
+# my_address = "0x9E1dcdB4E5B8539E0781689dDD9e8A41A7e8dAaD"
+# # always makesure you add 0x on the private key bcoz python always looks for hexadecimal
+# private_key = os.getenv("PRIVATE_KEY_LOCAL")
+
+
+# want to connect to other testnet/mainnet
+w3 = Web3(Web3.HTTPProvider("https://ropsten.infura.io/v3/9c9c73744aa14e5ab2e6ac6adc702d86"))
 # define the chain ID
-chain_id = 1337
-my_address = "0x9E1dcdB4E5B8539E0781689dDD9e8A41A7e8dAaD"
+chain_id = 3
+my_address = "0xC80098dDE76c33D814218097f0a83cf88f512232"
 # always makesure you add 0x on the private key bcoz python always looks for hexadecimal
-private_key = os.getenv("PRIVATE_KEY")
+private_key = os.getenv("PRIVATE_KEY_TEST")
+
 
 # deploy contract with python
 SimpleStorage = w3.eth.contract(abi=abi, bytecode=bytecode)
